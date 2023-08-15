@@ -53,6 +53,10 @@
     }
 
     function logOut() {
+      if (confirm("คุณต้องการออกจากระบบใช่หรือไม่")) {
+        liff.logout()
+        window.location.reload()
+      }
     }
 
     function closed() {
