@@ -75,10 +75,9 @@
       const profile = await liff.getProfile()
       document.getElementById("pictureUrl").src = (await liff.getProfile()).pictureUrl
       document.getElementById("userId").append(profile.userId)
-      document.getElementById("displayName").append(profile.displayName)
       document.getElementById("statusMessage").append(profile.statusMessage)
-
-
+      document.getElementById("displayName").append(profile.displayName)
+      document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
 
     function getEnvironment() {
