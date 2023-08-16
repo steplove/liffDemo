@@ -94,17 +94,24 @@
 
 
     async function sendMsg() {
-      if (liff.getContext().type !== "none") {
-        await liff.sendMessages([
-          {
-            "type": "sticker",
-            "stickerId": 1,
-            "packageId": 1
-          }
-        ])
-        alert("Message sent")
+  if (liff.getContext().type !== "none") {
+    const now = Date.now();
+    
+    await liff.sendMessages([
+      {
+        type: "sticker",
+        stickerId: 1,
+        packageId: 1
+      },
+      {
+        type: "text",
+        text: `Current timestamp: ${now}`
       }
-    }
+    ]);
+    
+    alert("Message sent");
+  }
+}
 
     function getContext() {
       if (liff.getContext() != null) {
