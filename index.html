@@ -1,4 +1,5 @@
 <html>
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
@@ -14,7 +15,10 @@
       display: none;
     }
   </style> -->
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <script src="js/vconsole.min.js"></script>
 </head>
+
 <body>
   <p>ทดสอบ</p>
   <img id="pictureUrl">
@@ -86,7 +90,7 @@
       const result = await liff.scanCode()
       document.getElementById("scanCode").append(result.value)
     }
-    
+
     function openWindow() {
       liff.openWindow({
         url: "https://line.me",
@@ -106,24 +110,24 @@
 
 
     async function sendMsg() {
-  if (liff.getContext().type !== "none") {
-    const now = Date.now();
-    
-    await liff.sendMessages([
-      {
-        type: "sticker",
-        stickerId: 1,
-        packageId: 1
-      },
-      {
-        type: "text",
-        text: `Current timestamp: ${now}`
+      if (liff.getContext().type !== "none") {
+        const now = Date.now();
+
+        await liff.sendMessages([
+          {
+            type: "sticker",
+            stickerId: 1,
+            packageId: 1
+          },
+          {
+            type: "text",
+            text: `Current timestamp: ${now}`
+          }
+        ]);
+
+        alert("Message sent date: " + new Date(now));
       }
-    ]);
-    
-    alert("Message sent date: " + new Date(now));
-  }
-}
+    }
 
     function getContext() {
       if (liff.getContext() != null) {
@@ -143,7 +147,7 @@
       document.getElementById("displayName").append(profile.displayName)
       document.getElementById("decodedIDToken").append(liff.getDecodedIDToken().email)
     }
-    
+
     function getEnvironment() {
       document.getElementById("os").append(liff.getOS())
       document.getElementById("language").append(liff.getLanguage())
@@ -178,4 +182,5 @@
     main()
   </script>
 </body>
+
 </html>
